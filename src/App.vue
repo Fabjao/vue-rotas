@@ -6,7 +6,12 @@
     </div>
 
     <div class="container">
-      <div class="font-weight-light">Contatos</div>
+      <router-link to="/" class="btn btn-info mb-4 mr-2" exact>
+      Home</router-link>
+      <router-link :to="{path:'/contatos'}" class="btn btn-info mb-4 mr-2">
+      Contatos</router-link>
+
+      <router-view></router-view>
     </div>
   </div>
 </template>
