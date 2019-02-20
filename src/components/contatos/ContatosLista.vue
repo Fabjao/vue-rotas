@@ -30,7 +30,7 @@ export default {
     };
   },
   methods: {
-    voltar(event) {
+    voltar() {
       this.$router.back();
     }
   }

@@ -20,7 +20,7 @@ export default new VueRouter({
           path: ':id',
           component: ContatoDetalhe,
           name: 'contato'
-        },        
+        },
         {
           path: ':id/editar',
           components: {
@@ -28,11 +28,14 @@ export default new VueRouter({
             'contato-detalhe': ContatoDetalhe
           }
         },
-        {path:'/contatos', redirect :'/meus-contatos'},
-        { path: '', component: ContatosHome }
-        
+        { path: '', component: ContatosHome, name: 'contatos' }
       ]
     },
-    { path: '/', component: Home }
+    { path: '/home', component: Home },
+    {
+      path: '/', redirect: to => {
+        return { name: 'contatos' }
+      }
+    }
   ]
 })
