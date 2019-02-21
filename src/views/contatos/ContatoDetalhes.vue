@@ -7,20 +7,26 @@
 
 <script>
 export default {
-  data() {
+  props:{
+    id:{
+      type:Number,
+      required:true
+    }
+  },
+  /*data() {
     return {
       id: this.$route.params.id
     };
-  },
+  },*/
   /*watch: {
     $route(to, from) {
       this.id = to.params.id;
     }
   },*/
-  beforeRouteUpdate(to, from, next) {
+ /* beforeRouteUpdate(to, from, next) {
     this.id = to.params.id;
     next();
-  },
+  },*/
   created() {
     console.log("Parâmetro da rota:", this.$route.params);
   }
