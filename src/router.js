@@ -9,8 +9,11 @@ import Erro404 from './views/contatos/Erro404.vue'
 import Erro404Contato from './views/contatos/Erro404Contato.vue'
 
 Vue.use(VueRouter)
+const extrarParametro = route => ({
+  id: +route.params.id
+})
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   linkExactActiveClass: 'active',
   routes: [
@@ -24,23 +27,28 @@ export default new VueRouter({
       },
       children: [
         {
-          path: ':id',
+          path: ':id(\\d+)',
           component: ContatoDetalhe,
           name: 'contato',
-          props: route => ({
-              id: +route.params.id
-            })
+          props: extrarParametro
         },
         {
-          path: ':id/editar',
-          alias: ':id/alterar',
+          // path: ':id(\\d+)/editar/:opcional',
+          //path: ':id(\\d+)/editar/:zeroOuMais*', 
+          //path: ':id(\\d+)/editar/:umOuMais+',
+          path: ':id(\\d+)/editar',
+          alias: ':id(\\d+)/alterar',
+          beforeEnter(to,from,next){
+            console.log("beforeEnter")
+           next()
+          },
           components: {
             default: ContatoEditar,
             'contato-detalhe': ContatoDetalhe
           },
           props: {
-            default: true,
-            'contato-detalhe': true
+            default: extrarParametro,
+            'contato-detalhe': extrarParametro
           }
         },
         { path: '', component: ContatosHome, name: 'contatos' },
@@ -58,3 +66,14 @@ export default new VueRouter({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log("beforeEach")
+  next()
+})
+
+router.afterEach((to, from) => {
+  console.log("afterEach")
+})
+
+export default router
