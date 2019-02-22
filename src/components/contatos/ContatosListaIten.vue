@@ -6,7 +6,8 @@
     >Detalhes</router-link> Navegando nas rotas-->
     <router-link
       class="btn btn-info btn-sm float-right"
-      :to="{path: `/contatos/${contato.id}`}"
+      :to="{path: `/contatos/${contato.id}`,
+      hash: '#parametros'}"
     >Detalhes</router-link>
 
     <!-- <button  class="btn btn-info btn-sm float-right"
