@@ -16,6 +16,11 @@
     </ul>
     <p v-else>Nenhum contato cadastrado</p>
     <button class="btn btn-secondary mt-4 mb-4" @click="voltar">Voltar</button>
+        <router-link
+      class="btn btn-info btn-sm mt-4 mb-4 ml-2"
+      :to="{path:'/contatosinserir'}"
+      name="contatosinserir"
+    >Inserir</router-link>
   </div>
 </template>
 <script>

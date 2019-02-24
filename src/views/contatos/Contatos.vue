@@ -1,18 +1,8 @@
 <template>
-  <div>
-    <ContatoLista :busca="busca" />
+  <div>    
     <router-view></router-view>
     <router-view name="contato-detalhe"></router-view>
+    <router-view name="contato-inserir"></router-view>
   </div>
 </template>
-
-<script>
-import ContatoLista from "./../../components/contatos/ContatosLista.vue";
-export default {
-  components: {
-    ContatoLista
-  },
-  props:['busca']
-};
-</script>
 

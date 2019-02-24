@@ -11,11 +11,13 @@ import Login from './views/login/Login.vue'
 
 import EventBus from './event-bus'
 
-const Home =() => import('./views/Home.vue')
-const Contato =()=> import(/*webpackChunkName:"contatos"*/'./views/contatos/Contatos.vue')
-const ContatoDetalhe =()=> import(/*webpackChunkName:"contatos"*/'./views/contatos/ContatoDetalhes.vue')
-const ContatosHome =()=> import(/*webpackChunkName:"contatos"*/'./views/contatos/ContatosHome.vue')
-const ContatoEditar =()=> import(/*webpackChunkName:"contatos"*/'./views/contatos/ContatoEditar.vue')
+const Home = () => import('./views/Home.vue')
+const Contato = () => import(/*webpackChunkName:"contatos"*/'./views/contatos/Contatos.vue')
+const ContatoDetalhe = () => import(/*webpackChunkName:"contatos"*/'./views/contatos/ContatoDetalhes.vue')
+const ContatosHome = () => import(/*webpackChunkName:"contatos"*/'./views/contatos/ContatosHome.vue')
+const ContatoEditar = () => import(/*webpackChunkName:"contatos"*/'./views/contatos/ContatoEditar.vue')
+const ContatoInserir = () => import(/*webpackChunkName:"contatos"*/'./views/contatos/ContatoInserir.vue')
+
 
 Vue.use(VueRouter)
 const extrarParametro = route => ({
@@ -44,7 +46,7 @@ const router = new VueRouter({
   routes: [
     {
       path: '/contatos',
-      component:Contato,
+      component: Contato,
       alias: ['/meus-contatos', '/lista-de-contatos'],
       props: (route) => {
         const busca = route.query.buscar
@@ -54,7 +56,7 @@ const router = new VueRouter({
         {
           path: ':id(\\d+)',
           component: ContatoDetalhe,
-          name: 'contato',
+          name: 'contatos',
           props: extrarParametro
         },
         {
@@ -81,6 +83,9 @@ const router = new VueRouter({
             default: extrarParametro,
             'contato-detalhe': extrarParametro
           }
+        },
+         {
+          path: '/contatosinserir', component: ContatoInserir
         },
         { path: '', component: ContatosHome, name: 'contatos' },
         { path: '*', component: Erro404Contato }
